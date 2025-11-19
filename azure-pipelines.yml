@@ -19,14 +19,29 @@ stages:
   - job: Build
     displayName: 'Build Job'
     steps:
-    - task: UsePhpVersion@0
-      inputs:
-        versionSpec: $(phpVersion)
-      displayName: 'Use PHP $(phpVersion)'
+    - script: |
+        sudo update-alternatives --set php /usr/bin/php$(phpVersion)
+        php -v
+      displayName: 'Setup PHP $(phpVersion)'
+      continueOnError: true
+
+    - script: |
+        sudo apt-get update
+        sudo apt-get install -y php$(phpVersion) php$(phpVersion)-cli php$(phpVersion)-common php$(phpVersion)-mbstring php$(phpVersion)-xml php$(phpVersion)-zip php$(phpVersion)-curl
+        php -v
+      displayName: 'Install PHP $(phpVersion) if needed'
+      condition: failed()
+
+    - script: |
+        php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+        php composer-setup.php --quiet
+        rm composer-setup.php
+        sudo mv composer.phar /usr/local/bin/composer
+      displayName: 'Install Composer'
 
     - script: |
         php -v
-        composer install --no-interaction --prefer-dist --optimize-autoloader
+        composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
       displayName: 'Install Composer Dependencies'
 
     - task: ArchiveFiles@2
