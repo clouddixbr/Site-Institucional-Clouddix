@@ -32,18 +32,6 @@ stages:
       displayName: 'Install PHP $(phpVersion) if needed'
       condition: failed()
 
-    - script: |
-        php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-        php composer-setup.php --quiet
-        rm composer-setup.php
-        sudo mv composer.phar /usr/local/bin/composer
-      displayName: 'Install Composer'
-
-    - script: |
-        php -v
-        composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
-      displayName: 'Install Composer Dependencies'
-
     - task: ArchiveFiles@2
       inputs:
         rootFolderOrFile: '$(System.DefaultWorkingDirectory)'

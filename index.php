@@ -2,37 +2,37 @@
 $ano_atual = date('Y');
 $servicos = [
     [
-        'icone' => '☁️',
+        'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>',
         'titulo' => 'Migração para Cloud',
         'descricao' => 'Planejamos e executamos a migração do seu ambiente on-premise para Azure ou AWS. Avaliação de custos, estratégia de migração e suporte pós go-live inclusos.',
         'tags' => ['Azure', 'AWS', 'Migração']
     ],
     [
-        'icone' => '⚡',
+        'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
         'titulo' => 'DevOps & Automação',
         'descricao' => 'Implementação de pipelines CI/CD, Infrastructure as Code e monitoramento. Reduzimos o tempo de deploy e aumentamos a confiabilidade das suas entregas.',
         'tags' => ['Azure DevOps', 'GitHub Actions', 'Terraform']
     ],
     [
-        'icone' => '🔒',
+        'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>',
         'titulo' => 'Segurança Cloud',
         'descricao' => 'Auditoria de segurança, implementação de políticas de acesso, backup e disaster recovery. Conformidade com LGPD e normas internacionais.',
         'tags' => ['Security', 'Compliance', 'LGPD']
     ],
     [
-        'icone' => '💼',
+        'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
         'titulo' => 'Consultoria em TI',
         'descricao' => 'Avaliação de infraestrutura atual, análise de custos cloud e elaboração de roadmap técnico. Te ajudamos a tomar decisões estratégicas baseadas em dados.',
         'tags' => ['Consultoria', 'Arquitetura', 'FinOps']
     ],
     [
-        'icone' => '🛠️',
+        'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>',
         'titulo' => 'Modernização de Apps',
         'descricao' => 'Refatoração de aplicações legadas, criação de APIs RESTful e migração para arquitetura de microserviços. Usamos .NET, Node.js, Python e PHP.',
         'tags' => ['Refactoring', 'APIs', 'Microserviços']
     ],
     [
-        'icone' => '🤝',
+        'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
         'titulo' => 'Suporte Gerenciado',
         'descricao' => 'Monitoramento 24x7, gestão de incidentes e suporte técnico especializado. Garantimos a disponibilidade da sua infraestrutura cloud.',
         'tags' => ['Suporte', 'Monitoramento', 'SLA']
@@ -89,7 +89,11 @@ $stats = [
     <nav class="navbar" id="navbar">
         <div class="container">
             <a href="#home" class="logo">
-                <span class="logo-icon">☁️</span>
+                <span class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                    </svg>
+                </span>
                 <span class="logo-text">Cloud<strong>Dix</strong></span>
             </a>
             <ul class="nav-menu" id="navMenu">
@@ -116,7 +120,12 @@ $stats = [
         </div>
         <div class="container">
             <div class="hero-content">
-                <span class="badge animate-fade-in">☁️ Cloud Computing & DevOps</span>
+                <span class="badge animate-fade-in">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                    </svg>
+                    Cloud Computing & DevOps
+                </span>
                 <h1 class="hero-title animate-slide-up">
                     Sua jornada para a nuvem <span class="gradient-text">começa aqui</span>
                 </h1>
@@ -149,7 +158,11 @@ $stats = [
             
             <div class="hero-visual animate-fade-in delay-2">
                 <div class="floating-card card-1">
-                    <div class="card-icon">☁️</div>
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                        </svg>
+                    </div>
                     <div class="card-content">
                         <h4>Cloud Azure</h4>
                         <div class="progress-bar">
@@ -158,7 +171,12 @@ $stats = [
                     </div>
                 </div>
                 <div class="floating-card card-2">
-                    <div class="card-icon">🔒</div>
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
                     <div class="card-content">
                         <h4>Segurança</h4>
                         <div class="progress-bar">
@@ -167,7 +185,11 @@ $stats = [
                     </div>
                 </div>
                 <div class="floating-card card-3">
-                    <div class="card-icon">⚡</div>
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
                     <div class="card-content">
                         <h4>Performance</h4>
                         <div class="progress-bar">
@@ -210,22 +232,43 @@ $stats = [
             
             <div class="about-features">
                 <div class="feature-box">
-                    <div class="feature-icon">💰</div>
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
                     <h3>FinOps e Otimização</h3>
                     <p>Analisamos suas contas cloud e identificamos desperdícios. Já ajudamos clientes a economizar até 35% em custos Azure/AWS.</p>
                 </div>
                 <div class="feature-box">
-                    <div class="feature-icon">🔧</div>
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 20h9"></path>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                        </svg>
+                    </div>
                     <h3>Mão na Massa</h3>
                     <p>Não somos só "consultoria de PowerPoint". A gente bota a mão no código, configura servidor, sobe pipeline. Tudo junto com sua equipe.</p>
                 </div>
                 <div class="feature-box">
-                    <div class="feature-icon">📚</div>
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
                     <h3>Transferência de Conhecimento</h3>
                     <p>Documentamos tudo e treinamos seu time. Nosso objetivo é que vocês consigam tocar sozinhos depois que sairmos.</p>
                 </div>
                 <div class="feature-box">
-                    <div class="feature-icon">🎯</div>
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="6"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                        </svg>
+                    </div>
                     <h3>Pragmatismo</h3>
                     <p>Priorizamos soluções simples e que funcionam. Não tem over-engineering aqui. Se dá pra resolver com menos, a gente faz com menos.</p>
                 </div>
@@ -320,28 +363,47 @@ $stats = [
                 
                 <div class="contact-info">
                     <div class="info-item">
-                        <div class="info-icon">📍</div>
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
                         <div class="info-content">
                             <h4>Localização</h4>
                             <p>Remoto (atendemos todo Brasil)</p>
                         </div>
                     </div>
                     <div class="info-item">
-                        <div class="info-icon">✉️</div>
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
                         <div class="info-content">
                             <h4>Email Comercial</h4>
                             <p>contato@clouddix.com.br</p>
                         </div>
                     </div>
                     <div class="info-item">
-                        <div class="info-icon">💬</div>
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
                         <div class="info-content">
                             <h4>WhatsApp (mais rápido)</h4>
                             <p>(11) 97542-7080</p>
                         </div>
                     </div>
                     <div class="info-item">
-                        <div class="info-icon">🕐</div>
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
                         <div class="info-content">
                             <h4>Atendimento</h4>
                             <p>Seg-Sex: 9h às 18h</p>
@@ -389,7 +451,11 @@ $stats = [
             <div class="footer-content">
                 <div class="footer-col">
                     <a href="#home" class="footer-logo">
-                        <span class="logo-icon">☁️</span>
+                        <span class="logo-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                            </svg>
+                        </span>
                         <span class="logo-text">Cloud<strong>Dix</strong></span>
                     </a>
                     <p class="footer-description">

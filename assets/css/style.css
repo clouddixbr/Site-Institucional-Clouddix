@@ -216,6 +216,10 @@ img {
     margin-bottom: var(--spacing-lg);
 }
 
+.badge svg {
+    stroke: var(--purple-600);
+}
+
 /* Tag */
 .tag {
     display: inline-block;
@@ -265,7 +269,13 @@ img {
 }
 
 .logo-icon {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon svg {
+    stroke: var(--purple-600);
 }
 
 .logo strong {
@@ -498,6 +508,10 @@ img {
     animation: float-card 6s infinite ease-in-out;
 }
 
+.floating-card svg {
+    stroke: var(--purple-600);
+}
+
 .card-1 {
     top: 10%;
     left: 10%;
@@ -522,7 +536,6 @@ img {
 }
 
 .card-icon {
-    font-size: 2rem;
     width: 50px;
     height: 50px;
     display: flex;
@@ -530,6 +543,12 @@ img {
     justify-content: center;
     background: var(--purple-100);
     border-radius: var(--radius-lg);
+}
+
+.card-icon svg {
+    stroke: var(--purple-600);
+    width: 28px;
+    height: 28px;
 }
 
 .card-content h4 {
@@ -603,8 +622,28 @@ img {
 }
 
 .feature-icon {
-    font-size: 2.5rem;
+    width: 56px;
+    height: 56px;
+    background: var(--purple-100);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: var(--spacing-md);
+    transition: var(--transition-base);
+}
+
+.feature-icon svg {
+    stroke: var(--purple-600);
+}
+
+.feature-box:hover .feature-icon {
+    background: var(--purple-200);
+    transform: rotate(5deg) scale(1.1);
+}
+
+.feature-box:hover .feature-icon svg {
+    stroke: var(--purple-700);
 }
 
 .feature-box h3 {
@@ -658,9 +697,28 @@ img {
 }
 
 .service-icon {
-    font-size: 3rem;
+    width: 56px;
+    height: 56px;
+    background: var(--purple-100);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: var(--spacing-lg);
-    display: inline-block;
+    transition: var(--transition-base);
+}
+
+.service-icon svg {
+    stroke: var(--purple-600);
+}
+
+.service-card:hover .service-icon {
+    background: var(--purple-200);
+    transform: scale(1.05);
+}
+
+.service-card:hover .service-icon svg {
+    stroke: var(--purple-700);
 }
 
 .service-title {
@@ -828,8 +886,11 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
     flex-shrink: 0;
+}
+
+.info-icon svg {
+    stroke: var(--purple-600);
 }
 
 .info-content h4 {
