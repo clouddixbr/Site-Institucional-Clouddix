@@ -3,15 +3,9 @@ $ano_atual = date('Y');
 $servicos = [
     [
         'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>',
-        'titulo' => 'Migração para Cloud',
-        'descricao' => 'Planejamos e executamos a migração do seu ambiente on-premise para Azure ou AWS. Avaliação de custos, estratégia de migração e suporte pós go-live inclusos.',
-        'tags' => ['Azure', 'AWS', 'Migração']
-    ],
-    [
-        'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
-        'titulo' => 'DevOps & Automação',
-        'descricao' => 'Implementação de pipelines CI/CD, Infrastructure as Code e monitoramento. Reduzimos o tempo de deploy e aumentamos a confiabilidade das suas entregas.',
-        'tags' => ['Azure DevOps', 'GitHub Actions', 'Terraform']
+        'titulo' => 'FinOps Azure',
+        'descricao' => 'Redução de custos Azure com análises precisas, identificação de desperdícios e otimizações técnicas que geram economia real. Identificamos e implementamos melhorias, criamos visibilidade do consumo e estruturamos governança para evitar surpresas na fatura.',
+        'tags' => ['FinOps', 'Otimização', 'Economia']
     ],
     [
         'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>',
@@ -24,12 +18,6 @@ $servicos = [
         'titulo' => 'Consultoria em TI',
         'descricao' => 'Avaliação de infraestrutura atual, análise de custos cloud e elaboração de roadmap técnico. Te ajudamos a tomar decisões estratégicas baseadas em dados.',
         'tags' => ['Consultoria', 'Arquitetura', 'FinOps']
-    ],
-    [
-        'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>',
-        'titulo' => 'Modernização de Apps',
-        'descricao' => 'Refatoração de aplicações legadas, criação de APIs RESTful e migração para arquitetura de microserviços. Usamos .NET, Node.js, Python e PHP.',
-        'tags' => ['Refactoring', 'APIs', 'Microserviços']
     ],
     [
         'icone' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
@@ -64,10 +52,9 @@ $cases = [
 ];
 
 $stats = [
-    ['numero' => '8+', 'label' => 'Anos no Mercado'],
+    ['numero' => '5+', 'label' => 'Anos no Mercado'],
     ['numero' => '120+', 'label' => 'Projetos Entregues'],
-    ['numero' => '45+', 'label' => 'Clientes Ativos'],
-    ['numero' => '15', 'label' => 'Especialistas']
+    ['numero' => '20+', 'label' => 'Clientes Atendidos']
 ];
 ?>
 <!DOCTYPE html>
@@ -77,7 +64,7 @@ $stats = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CloudDix - Soluções inovadoras em Cloud Computing, DevOps e Transformação Digital">
     <meta name="keywords" content="cloud computing, azure, devops, consultoria, transformação digital">
-    <title>CloudDix - Soluções Inovadoras em Cloud Computing</title>
+    <title>Clouddix</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,27 +74,21 @@ $stats = [
     
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="container">
+        <div class="nav-container">
             <a href="#home" class="logo">
-                <span class="logo-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                    </svg>
-                </span>
-                <span class="logo-text">Cloud<strong>Dix</strong></span>
+                <img src="assets/img/logo-clouddix.png" alt="CloudDix" class="logo-img">
             </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Início</a></li>
-                <li><a href="#about" class="nav-link">Sobre</a></li>
-                <li><a href="#services" class="nav-link">Serviços</a></li>
-                <li><a href="#cases" class="nav-link">Casos</a></li>
-                <li><a href="#contact" class="btn-nav">Contato</a></li>
-            </ul>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -120,30 +101,12 @@ $stats = [
         </div>
         <div class="container">
             <div class="hero-content">
-                <span class="badge animate-fade-in">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                    </svg>
-                    Cloud Computing & DevOps
-                </span>
                 <h1 class="hero-title animate-slide-up">
                     Sua jornada para a nuvem <span class="gradient-text">começa aqui</span>
                 </h1>
                 <p class="hero-description animate-slide-up delay-1">
-                    Especialistas em migração cloud, automação de deploys e infraestrutura moderna. 
-                    Trabalhamos com Azure, AWS e soluções híbridas para empresas que precisam de resultados reais.
+                    Somos especialistas em Modern Work e Cloud, parceiros Microsoft e referência em soluções Azure e ambientes híbridos. Ajudamos empresas a acelerar sua transformação digital com resultados reais, alto desempenho e tecnologia de ponta.
                 </p>
-                <div class="hero-buttons animate-slide-up delay-2">
-                    <a href="#contact" class="btn btn-primary">
-                        <span>Solicitar Consultoria</span>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <a href="#services" class="btn btn-secondary">
-                        <span>Nossos Serviços</span>
-                    </a>
-                </div>
                 
                 <!-- Stats -->
                 <div class="hero-stats animate-fade-in delay-3">
@@ -159,9 +122,7 @@ $stats = [
             <div class="hero-visual animate-fade-in delay-2">
                 <div class="floating-card card-1">
                     <div class="card-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                        </svg>
+                        <img src="assets/img/microsoft-azure.png" alt="Azure" style="width: 38px; height: 38px; object-fit: contain;">
                     </div>
                     <div class="card-content">
                         <h4>Cloud Azure</h4>
@@ -172,10 +133,7 @@ $stats = [
                 </div>
                 <div class="floating-card card-2">
                     <div class="card-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
+                        <img src="assets/img/microsoft-defender.png" alt="Microsoft Defender" style="width: 38px; height: 38px; object-fit: contain;">
                     </div>
                     <div class="card-content">
                         <h4>Segurança</h4>
@@ -186,12 +144,10 @@ $stats = [
                 </div>
                 <div class="floating-card card-3">
                     <div class="card-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                        </svg>
+                        <img src="assets/img/microsoft-m365.png" alt="Modern Work" style="width: 38px; height: 38px; object-fit: contain;">
                     </div>
                     <div class="card-content">
-                        <h4>Performance</h4>
+                        <h4>Modern Work</h4>
                         <div class="progress-bar">
                             <div class="progress" style="width: 98%"></div>
                         </div>
@@ -211,22 +167,10 @@ $stats = [
                     Especialistas em Cloud <span class="gradient-text">de verdade</span>
                 </h2>
                 <p class="section-description">
-                    Somos uma equipe de 15 profissionais apaixonados por infraestrutura e automação.
+                    Somos uma empresa especializada em Cloud, atuando desde 2020 na transformação digital de empresas. Nosso propósito é claro: entender cada desafio e entregar a solução ideal, com eficiência, segurança e alto valor agregado.
                 </p>
                 <p class="about-text">
-                    Começamos em 2017 ajudando empresas a migrarem seus sistemas para a nuvem. 
-                    O que era pra ser só uns projetos pontuais virou uma empresa especializada nisso.
-                </p>
-                <p class="about-text">
-                    Hoje trabalhamos principalmente com Azure e AWS, mas já pegamos de tudo um pouco - desde migração 
-                    de aplicações legadas em PHP até implementação de pipelines complexos com Terraform e Kubernetes. 
-                    Nosso forte mesmo é entender o problema do cliente e sugerir a solução mais adequada, 
-                    sem forçar tecnologia nova só porque tá na moda.
-                </p>
-                <p class="about-text">
-                    A equipe tem gente certificada Azure, AWS Solutions Architect, especialistas em DevOps e desenvolvedores 
-                    que manjam tanto de infraestrutura quanto de código. Ah, e trabalhamos remoto desde sempre - 
-                    atendemos clientes de São Paulo, Rio, BH e outras cidades.
+                    Nossa equipe é formada por profissionais certificados em Azure, unindo expertise em infraestrutura e desenvolvimento para criar soluções completas e modernas. Nascemos remotos e atendemos clientes em todo o Brasil, sempre com agilidade, proximidade e excelência técnica.
                 </p>
             </div>
             
@@ -239,7 +183,7 @@ $stats = [
                         </svg>
                     </div>
                     <h3>FinOps e Otimização</h3>
-                    <p>Analisamos suas contas cloud e identificamos desperdícios. Já ajudamos clientes a economizar até 35% em custos Azure/AWS.</p>
+                    <p>Analisamos suas assinaturas Azure, identificamos desperdícios e implementamos ações de otimização que geram economia real. Já ajudamos clientes a reduzir mais de 35% dos custos em Azure — com eficiência, transparência e impacto imediato no orçamento.</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-icon">
@@ -249,17 +193,7 @@ $stats = [
                         </svg>
                     </div>
                     <h3>Mão na Massa</h3>
-                    <p>Não somos só "consultoria de PowerPoint". A gente bota a mão no código, configura servidor, sobe pipeline. Tudo junto com sua equipe.</p>
-                </div>
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                        </svg>
-                    </div>
-                    <h3>Transferência de Conhecimento</h3>
-                    <p>Documentamos tudo e treinamos seu time. Nosso objetivo é que vocês consigam tocar sozinhos depois que sairmos.</p>
+                    <p>Não somos apenas uma "consultoria de PowerPoint". Atuamos de ponta a ponta: Trabalhamos lado a lado com sua equipe para fazer acontecer de verdade.</p>
                 </div>
                 <div class="feature-box">
                     <div class="feature-icon">
@@ -276,6 +210,29 @@ $stats = [
         </div>
     </section>
 
+    <!-- Microsoft Partner Section -->
+    <section class="microsoft-partner">
+        <div class="container">
+            <div class="partner-content">
+                <div class="partner-badge">
+                    <svg width="80" height="80" viewBox="0 0 23 23" fill="none">
+                        <rect width="11" height="11" fill="#F25022"/>
+                        <rect x="12" width="11" height="11" fill="#7FBA00"/>
+                        <rect y="12" width="11" height="11" fill="#00A4EF"/>
+                        <rect x="12" y="12" width="11" height="11" fill="#FFB900"/>
+                    </svg>
+                </div>
+                <div class="partner-text">
+                    <h2 class="partner-title">Parceiro de Soluções <span class="gradient-text">Microsoft</span></h2>
+                    <p class="partner-description">
+                        Somos parceiros CSP oficiais Microsoft, especializados em licenciamento e entrega de serviço. 
+                        Nossa expertise certificada garante que sua empresa receba o melhor das soluções Microsoft.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
@@ -283,10 +240,6 @@ $stats = [
             <h2 class="section-title">
                 Nossos <span class="gradient-text">Serviços</span>
             </h2>
-            <p class="section-description">
-                Trabalhamos principalmente com esses serviços abaixo. Se precisar de algo específico 
-                que não está aqui, chama no WhatsApp que a gente conversa.
-            </p>
             
             <div class="services-grid">
                 <?php foreach($servicos as $index => $servico): ?>
@@ -310,40 +263,19 @@ $stats = [
                 </div>
                 <?php endforeach; ?>
             </div>
+            <div class="carousel-dots" id="servicesDots"></div>
         </div>
     </section>
 
-    <!-- Cases Section -->
-    <section class="cases" id="cases">
+    <!-- Microsoft Partner Logo Section -->
+    <section class="partner-logo-section" id="partner">
         <div class="container">
-            <span class="section-label">Cases</span>
+            <span class="section-label">Parceiro</span>
             <h2 class="section-title">
-                Alguns projetos <span class="gradient-text">recentes</span>
+                Nossa <span class="gradient-text">parceria</span>
             </h2>
-            <p class="section-description">
-                Não podemos divulgar nomes dos clientes por questão de NDA, mas dá pra ter uma ideia 
-                do tipo de trabalho que fazemos:
-            </p>
-            
-            <div class="cases-grid">
-                <?php foreach($cases as $case): ?>
-                <div class="case-card">
-                    <div class="case-logo">
-                        <div class="case-logo-placeholder"><?= substr($case['empresa'], 0, 2) ?></div>
-                    </div>
-                    <h3 class="case-title"><?= $case['empresa'] ?></h3>
-                    <p class="case-description"><?= $case['descricao'] ?></p>
-                    <div class="case-tags">
-                        <?php foreach($case['tags'] as $tag): ?>
-                        <span class="tag"><?= $tag ?></span>
-                        <?php endforeach; ?>
-                    </div>
-                    <div class="case-result">
-                        <span class="result-label">Resultado:</span>
-                        <span class="result-value"><?= $case['resultado'] ?></span>
-                    </div>
-                </div>
-                <?php endforeach; ?>
+            <div class="partner-logo-container">
+                <img src="assets/img/microsoft-logo.png" alt="Microsoft Partner" class="microsoft-partner-logo">
             </div>
         </div>
     </section>
@@ -357,23 +289,11 @@ $stats = [
                     Bora <span class="gradient-text">conversar?</span>
                 </h2>
                 <p class="section-description">
-                    Manda uma mensagem pra gente. Normalmente respondemos em poucas horas. 
-                    Se preferir, chama direto no WhatsApp que é mais rápido.
+                    Nos envie um email. 
+                    Se preferir agilizar, nos mande uma mensagem pelo WhatsApp.
                 </p>
                 
                 <div class="contact-info">
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                        </div>
-                        <div class="info-content">
-                            <h4>Localização</h4>
-                            <p>Remoto (atendemos todo Brasil)</p>
-                        </div>
-                    </div>
                     <div class="info-item">
                         <div class="info-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -389,12 +309,29 @@ $stats = [
                     <div class="info-item">
                         <div class="info-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>Telefone</h4>
+                            <p><a href="tel:+5511941731330" style="color: inherit; text-decoration: none;">+55 11 94173-1330</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
                         </div>
                         <div class="info-content">
                             <h4>WhatsApp (mais rápido)</h4>
-                            <p>(11) 97542-7080</p>
+                            <p><a href="https://wa.me/5511941731330?text=Ol%C3%A1%20Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">+55 11 94173-1330</a></p>
+                            <a href="https://wa.me/5511941731330?text=Ol%C3%A1%20Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" style="color: #10b981; font-size: 0.875rem; margin-top: 4px; display: inline-block; text-decoration: none;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                                </svg>
+                                Chamar agora
+                            </a>
                         </div>
                     </div>
                     <div class="info-item">
@@ -413,7 +350,7 @@ $stats = [
             </div>
             
             <div class="contact-form-wrapper">
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" method="POST" action="send-email.php">
                     <div class="form-group">
                         <label for="nome">Nome Completo</label>
                         <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
@@ -451,19 +388,13 @@ $stats = [
             <div class="footer-content">
                 <div class="footer-col">
                     <a href="#home" class="footer-logo">
-                        <span class="logo-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                            </svg>
-                        </span>
-                        <span class="logo-text">Cloud<strong>Dix</strong></span>
+                        <img src="assets/img/logo-clouddix.png" alt="CloudDix" class="footer-logo-img">
                     </a>
                     <p class="footer-description">
-                        Especialistas em cloud computing, DevOps e automação. 
-                        Ajudamos empresas a migrarem para nuvem e otimizarem sua infraestrutura.
+                        Somos uma empresa especializada em Cloud, atuando desde 2020 na transformação digital de empresas. Nosso propósito é claro: entender cada desafio e entregar a solução ideal, com eficiência, segurança e alto valor agregado.
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/company/clouddix/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M17.04 17.043h-2.962v-4.64c0-1.106-.023-2.53-1.544-2.53-1.544 0-1.78 1.204-1.78 2.449v4.722H7.793V7.5h2.844v1.3h.039c.397-.75 1.364-1.54 2.808-1.54 3.004 0 3.556 1.974 3.556 4.545v5.238zM4.447 6.194c-.954 0-1.72-.776-1.72-1.729 0-.953.766-1.729 1.72-1.729.95 0 1.72.776 1.72 1.729 0 .953-.77 1.729-1.72 1.729zm1.484 10.85h-2.97V7.5h2.97v9.543zM18.522 0H1.476C.66 0 0 .645 0 1.44v17.12C0 19.355.66 20 1.476 20h17.042c.815 0 1.482-.645 1.482-1.44V1.44C20 .645 19.333 0 18.518 0h.003z"/>
                             </svg>
@@ -491,10 +422,9 @@ $stats = [
                     <h4 class="footer-title">Serviços</h4>
                     <ul class="footer-links">
                         <li><a href="#services">Cloud Computing</a></li>
-                        <li><a href="#services">DevOps & CI/CD</a></li>
-                        <li><a href="#services">Business Intelligence</a></li>
-                        <li><a href="#services">Segurança Digital</a></li>
-                        <li><a href="#services">Consultoria Estratégica</a></li>
+                        <li><a href="#services">FinOps Azure</a></li>
+                        <li><a href="#services">Consultoria em TI</a></li>
+                        <li><a href="#services">Segurança</a></li>
                     </ul>
                 </div>
                 
@@ -511,9 +441,8 @@ $stats = [
                 <div class="footer-col">
                     <h4 class="footer-title">Contato</h4>
                     <ul class="footer-links">
-                        <li>São Paulo/SP - Brasil</li>
-                        <li><a href="mailto:suporteclouddix@gmail.com">suporteclouddix@gmail.com</a></li>
-                        <li><a href="tel:+5511987654321">(11) 98765-4321</a></li>
+                        <li><a href="mailto:contato@clouddix.com.br">contato@clouddix.com.br</a></li>
+                        <li><a href="https://wa.me/5511941731330" target="_blank" rel="noopener noreferrer">+55 11 94173-1330</a></li>
                     </ul>
                 </div>
             </div>

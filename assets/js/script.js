@@ -9,8 +9,31 @@
     
     const navbar = document.getElementById('navbar');
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const navMenu = document.getElementById('navMenu');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.getElementById('navLinks');
+
+    // Mobile menu toggle
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navbar.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    }
 
     // Navbar scroll effect
     function handleNavbarScroll() {
@@ -23,45 +46,120 @@
 
     window.addEventListener('scroll', handleNavbarScroll);
 
-    // Mobile menu toggle
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenuToggle.classList.toggle('active');
+    // ===================================
+    // SERVICES CAROUSEL AUTO-SCROLL
+    // ===================================
+    
+    const servicesGrid = document.querySelector('.services-grid');
+    const dotsContainer = document.getElementById('servicesDots');
+    
+    if (servicesGrid && dotsContainer) {
+        const cards = servicesGrid.querySelectorAll('.service-card');
+        const totalCards = cards.length;
+        
+        // Create dots
+        for (let i = 0; i < totalCards; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => scrollToCard(i));
+            dotsContainer.appendChild(dot);
+        }
+        
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+        
+        let autoScrollInterval;
+        let isUserScrolling = false;
+        let scrollTimeout;
+        let currentIndex = 0;
+        
+        function updateDots(index) {
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
+        }
+        
+        function scrollToCard(index) {
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // spacing-xl
+            const scrollAmount = (cardWidth + gap) * index;
+            
+            servicesGrid.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+            currentIndex = index;
+            updateDots(index);
+            
+            // Reset auto-scroll timer
+            isUserScrolling = true;
+            clearInterval(autoScrollInterval);
+            clearTimeout(scrollTimeout);
+            
+            scrollTimeout = setTimeout(() => {
+                isUserScrolling = false;
+                autoScrollInterval = setInterval(autoScrollServices, 4000);
+            }, 3000);
+        }
+        
+        function autoScrollServices() {
+            if (isUserScrolling) return;
+            
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32; // spacing-xl
+            const scrollAmount = cardWidth + gap;
+            
+            // Check if at the end
+            if (servicesGrid.scrollLeft + servicesGrid.clientWidth >= servicesGrid.scrollWidth - 10) {
+                // Reset to beginning
+                servicesGrid.scrollTo({ left: 0, behavior: 'smooth' });
+                currentIndex = 0;
+            } else {
+                // Scroll to next card
+                servicesGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                currentIndex++;
+                if (currentIndex >= totalCards) currentIndex = 0;
+            }
+            
+            updateDots(currentIndex);
+        }
+        
+        // Update dots based on scroll position
+        servicesGrid.addEventListener('scroll', () => {
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 32;
+            const scrollPos = servicesGrid.scrollLeft;
+            const newIndex = Math.round(scrollPos / (cardWidth + gap));
+            
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                updateDots(currentIndex);
+            }
+            
+            isUserScrolling = true;
+            clearTimeout(scrollTimeout);
+            clearInterval(autoScrollInterval);
+            
+            // Resume after 3 seconds of no interaction
+            scrollTimeout = setTimeout(() => {
+                isUserScrolling = false;
+                autoScrollInterval = setInterval(autoScrollServices, 4000);
+            }, 3000);
         });
-    }
-
-    // Close mobile menu on link click
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            if (mobileMenuToggle) {
-                mobileMenuToggle.classList.remove('active');
+        
+        // Start auto-scroll
+        autoScrollInterval = setInterval(autoScrollServices, 4000);
+        
+        // Pause on hover
+        servicesGrid.addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+        });
+        
+        // Resume on mouse leave
+        servicesGrid.addEventListener('mouseleave', () => {
+            if (!isUserScrolling) {
+                autoScrollInterval = setInterval(autoScrollServices, 4000);
             }
         });
-    });
-
-    // Active section highlighting
-    function setActiveNavLink() {
-        const sections = document.querySelectorAll('section[id]');
-        const scrollY = window.pageYOffset;
-
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-            const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                if (navLink) {
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    navLink.classList.add('active');
-                }
-            }
-        });
     }
-
-    window.addEventListener('scroll', setActiveNavLink);
 
     // ===================================
     // SMOOTH SCROLL
@@ -109,16 +207,27 @@
             submitButton.innerHTML = '<span>Enviando...</span>';
 
             try {
-                // Simulate form submission (replace with actual API call)
-                await new Promise(resolve => setTimeout(resolve, 1200));
+                // Envia o formulário para o backend PHP
+                const response = await fetch('send-email.php', {
+                    method: 'POST',
+                    body: formData
+                });
 
-                // Success message
-                showNotification('Mensagem recebida! Vamos responder em breve.', 'success');
-                contactForm.reset();
+                const result = await response.json();
+
+                if (result.success) {
+                    // Success message
+                    showNotification(result.message, 'success');
+                    contactForm.reset();
+                } else {
+                    // Error message from server
+                    showNotification(result.message, 'error');
+                }
 
             } catch (error) {
-                // Error message
-                showNotification('Ops, algo deu errado. Tenta de novo ou manda no WhatsApp.', 'error');
+                // Network or parsing error
+                showNotification('Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.', 'error');
+                console.error('Erro:', error);
             } finally {
                 // Reset button
                 submitButton.disabled = false;
@@ -355,7 +464,7 @@
     
     // Create floating WhatsApp button
     const whatsappButton = document.createElement('a');
-    whatsappButton.href = 'https://api.whatsapp.com/send?phone=5511975427080&text=Oi!%20Vim%20do%20site%20e%20queria%20conversar%20sobre%20cloud';
+    whatsappButton.href = 'https://wa.me/5511941731330?text=Ol%C3%A1%20Eduardo!%20Vim%20do%20site%20CloudDix%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.';
     whatsappButton.target = '_blank';
     whatsappButton.rel = 'noopener noreferrer';
     whatsappButton.className = 'whatsapp-float';
