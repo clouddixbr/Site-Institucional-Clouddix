@@ -1,4 +1,8 @@
 <?php
+// Define base URL para assets funcionarem em localhost e produção
+$is_localhost = (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false);
+$assets_path = $is_localhost ? '/xampp/Site-Institucional-Clouddix' : '';
+
 $ano_atual = date('Y');
 $servicos = [
     [
@@ -65,7 +69,7 @@ $stats = [
     <meta name="description" content="CloudDix - Soluções inovadoras em Cloud Computing, DevOps e Transformação Digital">
     <meta name="keywords" content="cloud computing, azure, devops, consultoria, transformação digital">
     <title>Clouddix</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo $assets_path; ?>/assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -76,7 +80,7 @@ $stats = [
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">
-                <img src="assets/img/logo-clouddix.png" alt="CloudDix" class="logo-img">
+                <img src="<?php echo $assets_path; ?>/assets/img/logo-clouddix.png" alt="CloudDix" class="logo-img">
             </a>
             <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
                 <span></span>
@@ -121,8 +125,8 @@ $stats = [
             
             <div class="hero-visual animate-fade-in delay-2">
                 <div class="floating-card card-1">
-                    <div class="card-icon">
-                        <img src="assets/img/microsoft-azure.png" alt="Azure" style="width: 38px; height: 38px; object-fit: contain;">
+                    <div class="float-card-icon">
+                        <img src="<?php echo $assets_path; ?>/assets/img/microsoft-azure.png" alt="Azure" style="width: 38px; height: 38px; object-fit: contain;">
                     </div>
                     <div class="card-content">
                         <h4>Cloud Azure</h4>
@@ -132,8 +136,8 @@ $stats = [
                     </div>
                 </div>
                 <div class="floating-card card-2">
-                    <div class="card-icon">
-                        <img src="assets/img/microsoft-defender.png" alt="Microsoft Defender" style="width: 38px; height: 38px; object-fit: contain;">
+                    <div class="float-card-icon">
+                        <img src="<?php echo $assets_path; ?>/assets/img/microsoft-defender.png" alt="Microsoft Defender" style="width: 38px; height: 38px; object-fit: contain;">
                     </div>
                     <div class="card-content">
                         <h4>Segurança</h4>
@@ -143,8 +147,8 @@ $stats = [
                     </div>
                 </div>
                 <div class="floating-card card-3">
-                    <div class="card-icon">
-                        <img src="assets/img/microsoft-m365.png" alt="Modern Work" style="width: 38px; height: 38px; object-fit: contain;">
+                    <div class="float-card-icon">
+                        <img src="<?php echo $assets_path; ?>/assets/img/microsoft-m365.png" alt="Modern Work" style="width: 38px; height: 38px; object-fit: contain;">
                     </div>
                     <div class="card-content">
                         <h4>Modern Work</h4>
@@ -275,7 +279,7 @@ $stats = [
                 Nossa <span class="gradient-text">parceria</span>
             </h2>
             <div class="partner-logo-container">
-                <img src="assets/img/microsoft-logo.png" alt="Microsoft Partner" class="microsoft-partner-logo">
+                <img src="<?php echo $assets_path; ?>/assets/img/microsoft-logo.png" alt="Microsoft Partner" class="microsoft-partner-logo">
             </div>
         </div>
     </section>
@@ -388,7 +392,7 @@ $stats = [
             <div class="footer-content">
                 <div class="footer-col">
                     <a href="#home" class="footer-logo">
-                        <img src="assets/img/logo-clouddix.png" alt="CloudDix" class="footer-logo-img">
+                        <img src="<?php echo $assets_path; ?>/assets/img/logo-clouddix.png" alt="CloudDix" class="footer-logo-img">
                     </a>
                     <p class="footer-description">
                         Somos uma empresa especializada em Cloud, atuando desde 2020 na transformação digital de empresas. Nosso propósito é claro: entender cada desafio e entregar a solução ideal, com eficiência, segurança e alto valor agregado.
@@ -453,6 +457,6 @@ $stats = [
         </div>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    <script src="<?php echo $assets_path; ?>/assets/js/script.js"></script>
 </body>
 </html>
