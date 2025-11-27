@@ -1,0 +1,26 @@
+# Dependências
+/vendor/
+composer.lock
+
+# Variáveis de Ambiente
+.env
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+error_log
+
+# Temporários
+*.tmp
+*.temp
+*.cache
