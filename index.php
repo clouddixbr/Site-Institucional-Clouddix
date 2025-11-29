@@ -1,5 +1,6 @@
 <?php
 // Define base URL para assets funcionarem em localhost e produção
+$base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'];
 $is_localhost = (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false);
 $assets_path = $is_localhost ? '/xampp/Site-Institucional-Clouddix' : '';
 

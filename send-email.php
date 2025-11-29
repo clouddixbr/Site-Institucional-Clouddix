@@ -3,7 +3,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use CloudDix\AzureCommunicationEmail;
 
-// Carrega variáveis do .env se existir (para desenvolvimento local)
+// Carrega variáveis do .env APENAS para desenvolvimento local
+// Em produção, as variáveis do App Service têm prioridade
 if (file_exists(__DIR__ . '/.env')) {
     $lines = file(__DIR__ . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
@@ -12,10 +13,13 @@ if (file_exists(__DIR__ . '/.env')) {
             continue;
         }
         if (strpos($line, '=') !== false) {
-            putenv($line);
             list($key, $value) = explode('=', $line, 2);
-            $_ENV[$key] = $value;
-            $_SERVER[$key] = $value;
+            // Só define se não existir (App Service tem prioridade)
+            if (getenv($key) === false) {
+                putenv($line);
+                $_ENV[$key] = $value;
+                $_SERVER[$key] = $value;
+            }
         }
     }
 }
@@ -55,11 +59,15 @@ try {
     $connectionString = getenv('AZURE_COMMUNICATION_CONNECTION_STRING') ?: $_ENV['AZURE_COMMUNICATION_CONNECTION_STRING'] ?? null;
     
     if (!$connectionString) {
+        error_log('[Azure Email] Connection string não configurada. Verifique as variáveis de ambiente.');
         throw new Exception('Connection string do Azure Communication Services não configurada');
     }
 
     // Email de origem (precisa ser configurado no Azure Communication Services)
     $senderAddress = getenv('SENDER_EMAIL') ?: 'DoNotReply@clouddix.com';
+    
+    // Log de configuração (sem expor a chave completa)
+    error_log('[Azure Email] Iniciando envio - Sender: ' . $senderAddress);
     $recipientAddress = 'comercial@clouddix.com';
 
     // Monta o corpo do email em HTML
@@ -154,6 +162,9 @@ try {
 
     // Envia o email
     $result = $emailClient->sendEmail($emailMessage);
+    
+    // Log de sucesso
+    error_log('[Azure Email] Email enviado com sucesso - ID: ' . ($result['id'] ?? 'unknown') . ' - Para: ' . $recipientAddress);
 
     // Retorna sucesso
     echo json_encode([
@@ -163,13 +174,19 @@ try {
     ]);
 
 } catch (Exception $e) {
-    // Log do erro para debug (em produção, usar um sistema de logs adequado)
-    error_log("Erro ao enviar email via Azure Communication Services: " . $e->getMessage());
+    // Log detalhado do erro
+    error_log('[Azure Email] ERRO: ' . $e->getMessage());
+    error_log('[Azure Email] Stack trace: ' . $e->getTraceAsString());
     
     http_response_code(500);
+    
+    // Em produção, não expor detalhes técnicos ao usuário
+    $isProduction = (strpos($_SERVER['HTTP_HOST'], 'localhost') === false && 
+                     strpos($_SERVER['HTTP_HOST'], '127.0.0.1') === false);
+    
     echo json_encode([
         'success' => false, 
         'message' => 'Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.',
-        'error' => $e->getMessage() // Remover em produção
+        'error' => $isProduction ? null : $e->getMessage() // Só mostra erro em desenvolvimento
     ]);
 }
