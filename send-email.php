@@ -180,13 +180,15 @@ try {
     
     http_response_code(500);
     
-    // Em produção, não expor detalhes técnicos ao usuário
-    $isProduction = (strpos($_SERVER['HTTP_HOST'], 'localhost') === false && 
-                     strpos($_SERVER['HTTP_HOST'], '127.0.0.1') === false);
-    
+    // TEMPORÁRIO: Mostrar erro mesmo em produção para diagnóstico
     echo json_encode([
         'success' => false, 
         'message' => 'Erro ao enviar mensagem. Tente novamente ou entre em contato via WhatsApp.',
-        'error' => $isProduction ? null : $e->getMessage() // Só mostra erro em desenvolvimento
+        'error' => $e->getMessage(),
+        'debug' => [
+            'has_connection_string' => !empty(getenv('AZURE_COMMUNICATION_CONNECTION_STRING')),
+            'sender_email' => getenv('SENDER_EMAIL') ?: 'not set',
+            'host' => $_SERVER['HTTP_HOST']
+        ]
     ]);
 }
